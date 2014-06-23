@@ -55,7 +55,8 @@ module Geocoder
       :cache_prefix,
       :always_raise,
       :units,
-      :distances
+      :distances,
+      :open
     ]
 
     attr_accessor :data
@@ -105,6 +106,9 @@ module Geocoder
       # calculation options
       @data[:units]     = :mi      # :mi or :km
       @data[:distances] = :linear  # :linear or :spherical
+
+      # MapQuest specific
+      @data[:open] = false # default to the MapQuest licensed API
     end
 
     instance_eval(OPTIONS.map do |option|
